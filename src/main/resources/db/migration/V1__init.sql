@@ -1,0 +1,2 @@
+-- Initial migration
+-- Add any tables or seed data here
