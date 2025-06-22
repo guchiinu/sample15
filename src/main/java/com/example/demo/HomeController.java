@@ -23,18 +23,22 @@ public class HomeController {
     @GetMapping("/console")
     public String console(Model model,
                           @CookieValue(value = "dbSsl", defaultValue = "false") boolean ssl) {
-        logger.info("Query: SELECT version()");
+        String query = "SELECT version()";
+        logger.info("Query: {}", query);
         String version = versionMapper.selectVersion();
         logger.info("Result: {}", version);
         model.addAttribute("dbVersion", version);
         model.addAttribute("dbConnectionType", ssl ? "connection.ssl" : "connection.nonssl");
+        model.addAttribute("executedQuery", query);
+        model.addAttribute("queryResult", version);
         return "console";
     }
 
     @GetMapping("/databases")
     public String databases(Model model,
                             @CookieValue(value = "dbSsl", defaultValue = "false") boolean ssl) {
-        logger.info("Query: SELECT datname FROM pg_database");
+        String query = "SELECT datname FROM pg_database";
+        logger.info("Query: {}", query);
         List<String> databases = databaseInfoMapper.selectDatabases();
         logger.info("Result: {}", databases);
         logger.info("Query: SELECT version()");
@@ -43,13 +47,16 @@ public class HomeController {
         model.addAttribute("dbVersion", version);
         model.addAttribute("databases", databases);
         model.addAttribute("dbConnectionType", ssl ? "connection.ssl" : "connection.nonssl");
+        model.addAttribute("executedQuery", query);
+        model.addAttribute("queryResult", String.join(", ", databases));
         return "databases";
     }
 
     @GetMapping("/schemas")
     public String schemas(Model model,
                           @CookieValue(value = "dbSsl", defaultValue = "false") boolean ssl) {
-        logger.info("Query: SELECT schema_name FROM information_schema.schemata");
+        String query = "SELECT schema_name FROM information_schema.schemata";
+        logger.info("Query: {}", query);
         List<String> schemas = databaseInfoMapper.selectSchemas();
         logger.info("Result: {}", schemas);
         logger.info("Query: SELECT version()");
@@ -58,13 +65,16 @@ public class HomeController {
         model.addAttribute("dbVersion", version);
         model.addAttribute("schemas", schemas);
         model.addAttribute("dbConnectionType", ssl ? "connection.ssl" : "connection.nonssl");
+        model.addAttribute("executedQuery", query);
+        model.addAttribute("queryResult", String.join(", ", schemas));
         return "schemas";
     }
 
     @GetMapping("/users")
     public String users(Model model,
                         @CookieValue(value = "dbSsl", defaultValue = "false") boolean ssl) {
-        logger.info("Query: SELECT usename FROM pg_user");
+        String query = "SELECT usename FROM pg_user";
+        logger.info("Query: {}", query);
         List<String> users = databaseInfoMapper.selectUsers();
         logger.info("Result: {}", users);
         logger.info("Query: SELECT version()");
@@ -73,6 +83,8 @@ public class HomeController {
         model.addAttribute("dbVersion", version);
         model.addAttribute("users", users);
         model.addAttribute("dbConnectionType", ssl ? "connection.ssl" : "connection.nonssl");
+        model.addAttribute("executedQuery", query);
+        model.addAttribute("queryResult", String.join(", ", users));
         return "users";
     }
 }
