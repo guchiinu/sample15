@@ -1,0 +1,5 @@
+/build/
+/.gradle/
+# ignore build output only; keep wrapper scripts
+
+gradle/wrapper/gradle-wrapper.jar
