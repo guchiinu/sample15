@@ -15,10 +15,10 @@ The home page displays the PostgreSQL version retrieved from the database.
 
 Ensure you have PostgreSQL running locally with a database named `postgres` and user `postgres`/`postgres`.
 
-Run the following command:
+Run the application using Gradle (version 8.14 or newer):
 
 ```bash
-./mvnw spring-boot:run
+gradle bootRun
 ```
 
 Then open `http://localhost:8080` in your browser.
