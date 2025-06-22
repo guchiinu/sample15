@@ -19,6 +19,7 @@ public class ConnectController {
     public String connect(@RequestParam String username,
                           @RequestParam String password,
                           @RequestParam String database,
+                          @RequestParam(defaultValue = "false") boolean ssl,
                           HttpServletResponse response) {
         int maxAge = 7 * 24 * 60 * 60; // 1 week
 
@@ -34,9 +35,14 @@ public class ConnectController {
         dbCookie.setPath("/");
         dbCookie.setMaxAge(maxAge);
 
+        Cookie sslCookie = new Cookie("dbSsl", Boolean.toString(ssl));
+        sslCookie.setPath("/");
+        sslCookie.setMaxAge(maxAge);
+
         response.addCookie(userCookie);
         response.addCookie(passwordCookie);
         response.addCookie(dbCookie);
+        response.addCookie(sslCookie);
 
         return "redirect:/console";
     }

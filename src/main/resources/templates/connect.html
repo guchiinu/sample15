@@ -27,6 +27,13 @@
             <label class="block mb-1" th:text="#{connect.database}">Database</label>
             <input type="text" name="database" class="border rounded w-full" required>
         </div>
+        <div>
+            <label class="block mb-1" th:text="#{connect.ssl}">Connection Type</label>
+            <select name="ssl" class="border rounded w-full">
+                <option value="false" th:text="#{connect.ssl.no}">Non-SSL</option>
+                <option value="true" th:text="#{connect.ssl.yes}">SSL</option>
+            </select>
+        </div>
         <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded" th:text="#{connect.button}">Connect</button>
     </form>
 </main>
