@@ -28,6 +28,7 @@
     </div>
 </main>
 <footer class="bg-gray-200 text-center p-4">
+    <div th:text="#{${dbConnectionType}}"></div>
     <div th:text="${dbVersion}"></div>
     <div th:text="#{footer.copy}">© 2024 My Admin Console</div>
 </footer>
