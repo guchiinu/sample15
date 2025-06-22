@@ -28,6 +28,8 @@
     </div>
 </main>
 <footer class="bg-gray-200 text-center p-4">
+    <div class="text-xs" th:text="'SQL: ' + ${executedQuery}"></div>
+    <div class="text-xs" th:text="'Result: ' + ${queryResult}"></div>
     <div th:text="#{${dbConnectionType}}"></div>
     <div th:text="${dbVersion}"></div>
     <div th:text="#{footer.copy}">© 2024 My Admin Console</div>
