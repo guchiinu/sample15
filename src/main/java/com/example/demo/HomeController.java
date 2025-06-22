@@ -5,11 +5,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
-import com.example.demo.DatabaseInfoMapper;
-
-/**
- * Provides the home page for the simple management console.
- */
 
 @Controller
 public class HomeController {
@@ -21,19 +16,33 @@ public class HomeController {
         this.databaseInfoMapper = databaseInfoMapper;
     }
 
-    @GetMapping("/")
-    public String index(Model model) {
-        String dbVersion = versionMapper.selectVersion();
-        model.addAttribute("dbVersion", dbVersion);
+    @GetMapping("/console")
+    public String console(Model model) {
+        model.addAttribute("dbVersion", versionMapper.selectVersion());
+        return "console";
+    }
 
+    @GetMapping("/databases")
+    public String databases(Model model) {
         List<String> databases = databaseInfoMapper.selectDatabases();
-        List<String> schemas = databaseInfoMapper.selectSchemas();
-        List<String> users = databaseInfoMapper.selectUsers();
-
+        model.addAttribute("dbVersion", versionMapper.selectVersion());
         model.addAttribute("databases", databases);
-        model.addAttribute("schemas", schemas);
-        model.addAttribute("users", users);
+        return "databases";
+    }
 
-        return "index";
+    @GetMapping("/schemas")
+    public String schemas(Model model) {
+        List<String> schemas = databaseInfoMapper.selectSchemas();
+        model.addAttribute("dbVersion", versionMapper.selectVersion());
+        model.addAttribute("schemas", schemas);
+        return "schemas";
+    }
+
+    @GetMapping("/users")
+    public String users(Model model) {
+        List<String> users = databaseInfoMapper.selectUsers();
+        model.addAttribute("dbVersion", versionMapper.selectVersion());
+        model.addAttribute("users", users);
+        return "users";
     }
 }
