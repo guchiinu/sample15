@@ -5,6 +5,7 @@ This project demonstrates a simple "Hello World" web application using:
 - Java 21
 - Spring Boot 3
 - Thymeleaf for server-side HTML rendering
+- Tailwind CSS via CDN for basic styling
 - MyBatis for database access
 - Flyway for database migrations
 - PostgreSQL as the database

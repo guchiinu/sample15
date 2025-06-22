@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Hello</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-<h1>Hello World!</h1>
-<p>PostgreSQL version: <span th:text="${dbVersion}"></span></p>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+<div class="bg-white shadow-lg rounded p-8 text-center">
+<h1 class="text-3xl font-bold mb-4">Hello World!</h1>
+<p class="text-gray-700">PostgreSQL version: <span class="font-mono" th:text="${dbVersion}"></span></p>
+</div>
 </body>
 </html>
