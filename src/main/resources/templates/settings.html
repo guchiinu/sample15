@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{settings.title}">Settings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+<header class="bg-gray-800 text-white p-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold" th:text="#{header.title}">Admin Console</h1>
+    <div>
+        <a href="/settings" class="underline mr-4" th:text="#{settings.title}">Settings</a>
+    </div>
+</header>
+<main class="p-4 flex-grow">
+    <nav class="text-sm text-gray-600 mb-4">
+        <a href="/" th:text="#{console.menu.home}">Home</a> / <span th:text="#{settings.title}">Settings</span>
+    </nav>
+    <h2 class="font-semibold mb-2" th:text="#{settings.language}">Language</h2>
+    <form method="get" action="/settings" class="space-x-4">
+        <select name="lang" class="border rounded p-1">
+            <option value="en" th:text="#{settings.english}">English</option>
+            <option value="ja" th:text="#{settings.japanese}">Japanese</option>
+        </select>
+        <button type="submit" class="bg-blue-500 text-white px-4 py-1 rounded">OK</button>
+    </form>
+    <p class="mt-2" th:text="#{settings.currentLanguage} + ' ' + ${currentLocale}">Current Language: en</p>
+</main>
+<footer class="bg-gray-200 text-center p-4" th:text="#{footer.copy}">
+    © 2024 My Admin Console
+</footer>
+</body>
+</html>

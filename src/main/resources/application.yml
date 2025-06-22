@@ -5,6 +5,8 @@ spring:
     password: postgres
   thymeleaf:
     cache: false
+  messages:
+    basename: messages
 mybatis:
   configuration:
     map-underscore-to-camel-case: true

@@ -2,34 +2,35 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Connect</title>
+    <title th:text="#{connect.title}">Connect</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col">
-<header class="bg-gray-800 text-white p-4">
-    <h1 class="text-xl font-bold">Connect to Database</h1>
+<header class="bg-gray-800 text-white p-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold" th:text="#{header.title}">Admin Console</h1>
+    <a href="/settings" class="underline" th:text="#{settings.title}">Settings</a>
 </header>
 <main class="p-4 flex-grow">
     <nav class="text-sm text-gray-600 mb-4">
-        <span>Home</span>
+        <span th:text="#{console.menu.home}">Home</span>
     </nav>
     <form action="/connect" method="post" class="bg-white shadow rounded p-4 space-y-4 max-w-md">
         <div>
-            <label class="block mb-1">User</label>
+            <label class="block mb-1" th:text="#{connect.user}">User</label>
             <input type="text" name="username" class="border rounded w-full" required>
         </div>
         <div>
-            <label class="block mb-1">Password</label>
+            <label class="block mb-1" th:text="#{connect.password}">Password</label>
             <input type="password" name="password" class="border rounded w-full" required>
         </div>
         <div>
-            <label class="block mb-1">Database</label>
+            <label class="block mb-1" th:text="#{connect.database}">Database</label>
             <input type="text" name="database" class="border rounded w-full" required>
         </div>
-        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Connect</button>
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded" th:text="#{connect.button}">Connect</button>
     </form>
 </main>
-<footer class="bg-gray-200 text-center p-4">
+<footer class="bg-gray-200 text-center p-4" th:text="#{footer.copy}">
     © 2024 My Admin Console
 </footer>
 </body>

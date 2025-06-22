@@ -2,24 +2,27 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Databases</title>
+    <title th:text="#{databases.title}">Databases</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col">
 <header class="bg-gray-800 text-white p-4 flex justify-between items-center">
-    <h1 class="text-xl font-bold">Admin Console</h1>
-    <span class="text-sm" th:text="${dbVersion}"></span>
+    <h1 class="text-xl font-bold" th:text="#{header.title}">Admin Console</h1>
+    <div>
+        <a href="/settings" class="underline mr-4" th:text="#{settings.title}">Settings</a>
+        <span class="text-sm" th:text="${dbVersion}"></span>
+    </div>
 </header>
 <main class="p-4 flex-grow">
     <nav class="text-sm text-gray-600 mb-4">
-        <a href="/">Home</a> / <a href="/console">Console</a> / <span>Databases</span>
+        <a href="/" th:text="#{console.menu.home}">Home</a> / <a href="/console" th:text="#{console.menu.console}">Console</a> / <span th:text="#{databases.title}">Databases</span>
     </nav>
-    <h2 class="font-semibold mb-2">Databases</h2>
+    <h2 class="font-semibold mb-2" th:text="#{databases.title}">Databases</h2>
     <ul class="bg-white shadow rounded p-2">
         <li th:each="db : ${databases}" th:text="${db}" class="border-b last:border-0 py-1"></li>
     </ul>
 </main>
-<footer class="bg-gray-200 text-center p-4">
+<footer class="bg-gray-200 text-center p-4" th:text="#{footer.copy}">
     © 2024 My Admin Console
 </footer>
 </body>
