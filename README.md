@@ -8,6 +8,7 @@ This project demonstrates a simple "Hello World" web application using:
 - MyBatis for database access
 - Flyway for database migrations
 - PostgreSQL as the database
+- Gradle Kotlin DSL build scripts
 
 The home page displays the PostgreSQL version retrieved from the database.
 
