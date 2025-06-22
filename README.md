@@ -22,3 +22,8 @@ gradle bootRun
 ```
 
 Then open `http://localhost:8080` in your browser.
+
+## Test Database
+
+Integration tests expect a PostgreSQL database named `sample15_test`. Use the default user `postgres` with password `postgres`.
+
