@@ -1,6 +1,7 @@
 package com.example.demo;
 
-import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,10 +19,25 @@ public class ConnectController {
     public String connect(@RequestParam String username,
                           @RequestParam String password,
                           @RequestParam String database,
-                          HttpSession session) {
-        session.setAttribute("dbUser", username);
-        session.setAttribute("dbPassword", password);
-        session.setAttribute("dbName", database);
+                          HttpServletResponse response) {
+        int maxAge = 7 * 24 * 60 * 60; // 1 week
+
+        Cookie userCookie = new Cookie("dbUser", username);
+        userCookie.setPath("/");
+        userCookie.setMaxAge(maxAge);
+
+        Cookie passwordCookie = new Cookie("dbPassword", password);
+        passwordCookie.setPath("/");
+        passwordCookie.setMaxAge(maxAge);
+
+        Cookie dbCookie = new Cookie("dbName", database);
+        dbCookie.setPath("/");
+        dbCookie.setMaxAge(maxAge);
+
+        response.addCookie(userCookie);
+        response.addCookie(passwordCookie);
+        response.addCookie(dbCookie);
+
         return "redirect:/console";
     }
 }

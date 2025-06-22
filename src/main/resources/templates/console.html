@@ -8,23 +8,29 @@
 <body class="bg-gray-100 min-h-screen flex flex-col">
 <header class="bg-gray-800 text-white p-4 flex justify-between items-center">
     <h1 class="text-xl font-bold" th:text="#{header.title}">Admin Console</h1>
-    <div>
-        <a href="/settings" class="underline mr-4" th:text="#{settings.title}">Settings</a>
-        <span class="text-sm" th:text="${dbVersion}"></span>
-    </div>
+    <a href="/settings" class="underline" th:text="#{settings.title}">Settings</a>
 </header>
-<main class="p-4 flex-grow">
-    <nav class="text-sm text-gray-600 mb-4">
-        <a href="/" th:text="#{console.menu.home}">Home</a> / <span th:text="#{console.menu.console}">Console</span>
-    </nav>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <a href="/databases" class="bg-white shadow rounded p-4 text-center" th:text="#{console.databases}">Databases</a>
-        <a href="/schemas" class="bg-white shadow rounded p-4 text-center" th:text="#{console.schemas}">Schemas</a>
-        <a href="/users" class="bg-white shadow rounded p-4 text-center" th:text="#{console.users}">Users</a>
+<main class="flex flex-grow">
+    <aside class="w-64 bg-gray-100 p-4 space-y-2">
+        <a href="/console" class="block" th:text="#{console.menu.console}">Console</a>
+        <a href="/databases" class="block" th:text="#{console.databases}">Databases</a>
+        <a href="/schemas" class="block" th:text="#{console.schemas}">Schemas</a>
+        <a href="/users" class="block" th:text="#{console.users}">Users</a>
+    </aside>
+    <div class="p-4 flex-grow">
+        <nav class="text-sm text-gray-600 mb-4">
+            <a href="/" th:text="#{console.menu.home}">Home</a> / <span th:text="#{console.menu.console}">Console</span>
+        </nav>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <a href="/databases" class="bg-white shadow rounded p-4 text-center" th:text="#{console.databases}">Databases</a>
+            <a href="/schemas" class="bg-white shadow rounded p-4 text-center" th:text="#{console.schemas}">Schemas</a>
+            <a href="/users" class="bg-white shadow rounded p-4 text-center" th:text="#{console.users}">Users</a>
+        </div>
     </div>
 </main>
-<footer class="bg-gray-200 text-center p-4" th:text="#{footer.copy}">
-    © 2024 My Admin Console
+<footer class="bg-gray-200 text-center p-4">
+    <div th:text="${dbVersion}"></div>
+    <div th:text="#{footer.copy}">© 2024 My Admin Console</div>
 </footer>
 </body>
 </html>
